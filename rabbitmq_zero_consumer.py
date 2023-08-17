@@ -1,4 +1,5 @@
 import json, requests, re
+from sys import argv
 
 def get_queues(host, username, password, regex):
     url = f"http://{host}:15672/api/queues/"
@@ -6,9 +7,9 @@ def get_queues(host, username, password, regex):
     queues = response.json()
     return [queue["name"] for queue in queues if queue["consumers"] == 0 and re.match(regex, queue['name'])]
 
-host = "10.201.1.211"
-username = "ynk"
-password = "ynk"
+host = "\"" + argv[0] + "\""
+username = "\"" + argv[1] + "\""
+password = "\"" + argv[2] + "\""
 regex = "^(?!_)([a-zA-Z0-9]+)$"
 
 queues = get_queues(host, username, password, regex)

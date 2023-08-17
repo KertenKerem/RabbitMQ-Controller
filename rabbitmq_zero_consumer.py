@@ -7,9 +7,9 @@ def get_queues(host, username, password, regex):
     queues = response.json()
     return [queue["name"] for queue in queues if queue["consumers"] == 0 and re.match(regex, queue['name'])]
 
-host = "\"" + argv[0] + "\""
-username = "\"" + argv[1] + "\""
-password = "\"" + argv[2] + "\""
+host = f"{argv[1]}"
+username = f"{argv[2]}"
+password = f"{argv[3]}"
 regex = "^(?!_)([a-zA-Z0-9]+)$"
 
 queues = get_queues(host, username, password, regex)

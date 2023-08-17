@@ -17,3 +17,7 @@ The script uses the following Python libraries:
 * `json`: This library is used to parse the JSON response from the RabbitMQ API.
 * `requests`: This library is used to make HTTP requests to the RabbitMQ API.
 * `re`: This library is used to match regular expressions.
+  
+For example:
+
+* `python3` rabbitmq_zero_consumer.py my-rabbit-server my-username my-password
